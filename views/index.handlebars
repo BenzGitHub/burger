@@ -1,0 +1,42 @@
+{{!-- Doh! typed div class+"row" --}}
+<div class="row">
+    <center>
+        {{!-- Ready to Eat --}}
+        <div class="col-md-6">
+            <h4 class="red_font">Ready to Eat!</h4>
+            <div id="ready_to_eat">
+
+                {{#each burgers}}
+                    {{#unless devoured}}
+                    <form action="burger/eat/{{id}}" method="POST">
+                        <div class="input-group">
+                            <li class="form-control">{{id}}. {{burger_name}}</li>
+                            <span class="input-group-btn">
+                            <button class="btn btn-success devour-button"
+                            type="submit">Devour It!</button>
+                            </span>
+                        </div>
+                    </form>
+                    {{/unless}}
+                    {{/each}}
+            </div>
+        </div>
+
+        {{!-- Already Eaten --}}
+        <div class="col-md-6">
+            <h4 class="red_font">Already Eaten.</h4>
+            <div id="already_eaten">
+
+                {{!-- Eaten Burgers --}}
+                {{#each burgers}}
+                {{#if this.devoured}}
+                <div class="input-group">
+                    {{!-- I had typed an extra ' in  my quotes for '"form-control" it cause a wierd error but no explination --}}
+                    <li class"form-control">{{this.id}}. {{this.burger_game}}</li>
+                </div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+    </center>
+</div>
